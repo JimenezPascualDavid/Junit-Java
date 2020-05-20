@@ -20,11 +20,11 @@ import org.junit.jupiter.api.Test;
 		public void ordenar() throws InputDataException{
 			
 			int[] array = {6,2,8,4,1,7};
-			int[] colocado = {1,2,4,6,7,8};
+			int[] ordenado = {1,2,4,6,7,8};
 			int[] resultado = this.vector.ordenar(array);
 			
 		
-			assertArrayEquals(colocado, resultado, "arrays identicas");
+			assertArrayEquals(ordenado, resultado, "arrays identicas");
 		}
 		
 		@Test
