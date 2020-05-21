@@ -10,53 +10,54 @@ import org.junit.jupiter.api.Test;
 
 public class UtilidadesTest {
 	
-	private Utilidades utils;
-	
+	private Utilidades test;
+	 
 	@BeforeEach
 	public void setUp() {
-		this.utils = new Utilidades();
+		test = new Utilidades();
 	}
-	
 	@Test
-	public void esFinDeSemana1() throws FechaException {		
-		assertTrue(this.utils.esFinDeSemana(13,6,2020));
+	public void esFechaAnterior() throws FechaException {
+		assertThrows(FechaException.class, ()->this.test.esFinDeSemana(2,8,1888));
 
 	}
 	
 	@Test
-	public void esFinDeSemana2() throws FechaException {		
-		assertTrue(this.utils.esFinDeSemana(28,6,2020));
+	public void esFechaPosterior() throws FechaException {		
+		assertThrows(FechaException.class, ()->this.test.esFinDeSemana(12,6,3010));
+	}
+
+	
+	@Test
+	public void esFinDeSemanaSabado() throws FechaException {		
+		assertTrue(this.test.esFinDeSemana(13,6,2020));
 
 	}
 	
 	@Test
-	public void esFinDeSemana3() throws FechaException {
-		assertFalse(this.utils.esFinDeSemana(26,5,2020));
+	public void esFinDeSemanaDomingo() throws FechaException {		
+		assertTrue(this.test.esFinDeSemana(28,6,2020));
 
 	}
 	
 	@Test
-	public void esFinDeSemana4() throws FechaException {
-		assertFalse(this.utils.esFinDeSemana(1,1,1900));
+	public void noesFinDeSemana() throws FechaException {
+		assertFalse(this.test.esFinDeSemana(26,5,2020));
 
 	}
 	
 	@Test
-	public void esFinDeSemana5() throws FechaException {
-		assertFalse(this.utils.esFinDeSemana(1,1,3000));
+	public void esFechaLimite() throws FechaException {
+		assertFalse(this.test.esFinDeSemana(1,1,1900));
 
 	}
 	
 	@Test
-	public void esFinDeSemana6() throws FechaException {
-		assertThrows(FechaException.class, ()->this.utils.esFinDeSemana(2,8,1888));
+	public void esFechaLimite1() throws FechaException {
+		assertFalse(this.test.esFinDeSemana(1,1,3000));
 
 	}
 	
-	@Test
-	public void esFinDeSemana7() throws FechaException {		
-		assertThrows(FechaException.class, ()->this.utils.esFinDeSemana(12,6,3010));
-	}
 
 }
 
