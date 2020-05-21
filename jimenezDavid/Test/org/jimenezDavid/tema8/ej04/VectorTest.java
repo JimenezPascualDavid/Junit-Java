@@ -42,7 +42,7 @@ import org.junit.jupiter.api.Test;
 			
 			int[] array = null;
 			
-		
+		 
 			assertThrows(InputDataException.class, ()->this.vector.ordenar(array));
 		}
 		
